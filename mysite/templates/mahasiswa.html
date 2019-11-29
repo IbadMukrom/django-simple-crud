@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form Registrasi</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body class="container">
+    <div style="margin: 16px;">
+        <h2>Data Mahasiswa</h2>
+        
+        <div class="card">
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nomer</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Alamat</th>
+                            <th scope="col">Nim</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for mahasiswa in semua_mahasiswa %}
+                        <tr>
+                            <th scope="row">{{forloop.counter}}</th>
+                            <td>{{mahasiswa.id}}</td>
+                            <td>{{mahasiswa.nama}}</td>
+                            <td>{{mahasiswa.alamat}}</td>
+                            <td>{{mahasiswa.nim}}</td>
+                            <td>
+                            <button type="button"> <a href="/mahasiswa/{{mahasiswa.id}}/edit/" class="btn btn default" > <span class="glyphicon-trash"></span> edit</a> </button>
+                                <a href="/mahasiswa/{{mahasiswa.id}}/hapus/" class="btn btn-warning" > <span class="glyphicon glyphicon-trash"></span> hapus</a> 
+                            </td>
+                            
+                                                                      
+                        </tr>
+                        {% endfor %}
+                        
+                    </tbody>  
+                </table>
+            </div>
+        </div>
+        <a href = " {% url 'register' %}" class="btn btn-primary"> <span class="glyphicon glyphicon-trash"></span> tambah data</a>
+    </div>
+</body>
+
+</html>
